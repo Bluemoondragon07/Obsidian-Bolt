@@ -848,7 +848,7 @@ body.is-mobile .view-action:nth-last-of-type(2) {
     --on-upper-accent: var(--on-primary);
     --on-lower-accent: var(--on-primary);
     --lower-accent: var(--primary-lighter);
-    --primary-lighter: hsl(var(--accent-h), calc(var(--accent-s) - 20%), calc(var(--accent-l) + 7%));
+    --primary-lighter: hsl(var(--accent-h), calc(var(--accent-s) - 14%), calc(var(--accent-l) + 7%));
 
     --secondary: #4a6363;
     --on-secondary: #ffffff;
@@ -865,7 +865,7 @@ body.is-mobile .view-action:nth-last-of-type(2) {
     --error-container: #ffdad6;
     --on-error-container: #410002;
 
-    --background: #fafdfc;
+    --background: #fdfcfa;
     --on-background: #191c1c;
     --surface: #eef5f3;
     --on-surface: #191c1c;
@@ -1001,6 +1001,126 @@ body.is-mobile .view-action:nth-last-of-type(2) {
     --on-surface-variant: #e3e3dc;
 }
 
+/* =========== Classic Theme ========== */
+.theme-light.theme-classic {
+    --accent-h: 256 !important;
+    --accent-s: 34% !important;
+    --accent-l: 48% !important;
+
+    --primary: hsl(256, 34%, 48%);
+    --on-primary:#ffffff;
+    --primary-container: #EADDFF;
+    --on-primary-container: #21005D;
+
+    --secondary: #625B71;
+    --on-secondary: #ffffff;
+    --secondary-container: #E8DEF8;
+    --on-secondary-container: #1D192B; 
+
+    --tertiary: #7D5260;
+    --on-tertiary: #FFFFFF;
+    --tertiary-container: #FFD8E4;
+    --on-tertiary-container: #31111D;
+
+    --background: #FFFBFE;
+    --on-background: #1C1B1F;
+    --surface: #f7f1f6;
+    --on-surface: #1C1B1F;
+
+    --outline: #79747E;
+    --surface-variant: #E7E0EC;
+    --on-surface-variant: #49454F;
+}
+.theme-dark.theme-classic {
+    --accent-h: 258 !important;
+    --accent-s: 100% !important;
+    --accent-l: 87% !important;
+
+    --primary: hsl(258, 100%, 87%);
+    --on-primary:#D0BCFF;
+    --primary-container: #745eaa;
+    --on-primary-container: #EADDFF;
+
+    --secondary: #CCC2DC;
+    --on-secondary: #332D41;
+    --secondary-container: #4A4458;
+    --on-secondary-container: #E8DEF8; 
+
+    --tertiary: #EFB8C8;
+    --on-tertiary: #492532;
+    --tertiary-container: #633B48;
+    --on-tertiary-container: #FFD8E4;
+
+    --background: #1C1B1F;
+    --on-background: #E6E1E5;
+    --surface: #2b2930;
+    --on-surface: #E6E1E5;
+
+    --outline: #938F99;
+    --surface-variant: #49454F;
+    --on-surface-variant: #CAC4D0;
+}
+
+/* ========== Lumen Theme ================= */
+.theme-light.theme-lumen {
+    --accent-h: 231 !important;
+    --accent-s: 49% !important;
+    --accent-l: 50% !important;
+
+    --primary: hsl(232, 43%, 65%);
+    --on-primary:#ffffff;
+    --primary-container: #dee0ff;
+    --on-primary-container: #000f5d;
+
+    --secondary: #006875;
+    --on-secondary: #ffffff;
+    --secondary-container: #beefe8;
+    --on-secondary-container: #001f24; 
+
+    --tertiary: #904d00;
+    --on-tertiary: #FFFFFF;
+    --tertiary-container: #fff0cb;
+    --on-tertiary-container: #2f1500;
+
+    --background: #fffefa;
+    --on-background: #32345d;
+    --surface: #f6f5f2;
+    --on-surface: #030865;
+
+    --outline: #767680;
+    --surface-variant: #e3e1ec;
+    --on-surface-variant: #46464f;
+}
+.theme-dark.theme-lumen {
+    --accent-h: 233 !important;
+    --accent-s: 100% !important;
+    --accent-l: 87% !important;
+
+    --primary: hsl(233, 100%, 87%);
+    --on-primary:#023e91;
+    --primary-container: #325169;
+    --on-primary-container: #dee0ff;
+
+    --secondary: hsl(189, 100%, 87%);
+    --on-secondary: #5c858b;
+    --secondary-container: #40626b;
+    --on-secondary-container: #a0d4e2; 
+
+    --tertiary: #ffc97d;
+    --on-tertiary: #4d2f00;
+    --tertiary-container: #6e3900;
+    --on-tertiary-container: #ffdcc3;
+
+    --background: #18192a;
+    --on-background: #e0e0ff;
+    --surface: #232341;
+    --on-surface: #e0e0ff;
+
+    --outline: #90909a;
+    --surface-variant: #46464f;
+    --on-surface-variant: #c7c5d0;
+}
+
 /* ========== scrollbars ================== */
 body {
     --scrollbar-thumb-bg: var(--surface-variant);
@@ -1073,8 +1193,8 @@ button.mod-warning {
 
 /* @settings
 
-name: Enigma
-id: enigma-theme
+name: Bolt
+id: bolt-theme
 settings:
     -
         id: theme-class-select
@@ -1089,5 +1209,11 @@ settings:
             -
                 label: Garden
                 value: theme-green
+            -
+                label: Classic
+                value: theme-classic
+            -
+                label: Lumen
+                value: theme-lumen
 
 */
