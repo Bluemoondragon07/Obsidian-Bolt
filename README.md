@@ -1,3 +1,4 @@
+![](BOLT large.png)
 # Obsidian **Bolt**
 A theme for Obsidian.md inspired by Android apps and Google's Material Design system. Simple, easy, ready to go; no need for Style Settings (unless you want to change the color scheme).
 
