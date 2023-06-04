@@ -1,4 +1,5 @@
-![](BOLT large.png)
+![BOLT large.png](https://github.com/Bluemoondragon07/Obsidian-Bolt/blob/e5adfb5e56a18668099457d9bc0413003659a05f/BOLT%20large.png)
+
 # Obsidian **Bolt**
 A theme for Obsidian.md inspired by Android apps and Google's Material Design system. Simple, easy, ready to go; no need for Style Settings (unless you want to change the color scheme).
 
