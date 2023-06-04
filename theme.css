@@ -3,7 +3,7 @@
 
 /* =============== some quick design choices using variables ==================== */
 body {
-    --font-interface-theme: Inter;
+    --font-interface-theme: Roboto, Inter;
     --border-width: 2px;
     --inline-title-weight: 500;
     --inline-title-size: 3em;
@@ -777,6 +777,7 @@ padding: 0;
 /* ==== folders ==== */
  .nav-folder-title {
     font-size: 15px;
+    font-weight: 600 !important;
 }
 .nav-folder-title-content:before {
     content: "";
@@ -814,9 +815,11 @@ body.is-mobile .view-action:nth-last-of-type(2) {
     height: 60px;
     box-shadow: var(--shadow-s);
     top: calc(100vh - 60px - 64px - 16px);
-    z-index: 10;
+    z-index: 100 !important;
 }
-
+.is-phone .view-header {
+    z-index: 100; /* this ensures that the FAB is on top */
+}
 /* ======== icon sizes ======= */
 .is-mobile {
     --icon-s: 17px;
