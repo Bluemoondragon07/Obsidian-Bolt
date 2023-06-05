@@ -584,7 +584,8 @@ background-color: transparent !important;
 .workspace-tab-header:not(.is-active) .workspace-tab-header-inner-close-button {
     visibility: hidden;
 }
-.workspace-tabs:not(.mod-stacked) .workspace-tab-header-inner-close-button {
+.workspace-tabs:not(.mod-stacked) .workspace-tab-header-inner-close-button,
+.workspace-tabs .metadata-menu.fileclass-icon {
     color: var(--on-upper-accent) !important;
 }
 .workspace-tab-header.is-active {
@@ -1260,7 +1261,6 @@ button.mod-warning {
   color: var(--on-tertiary-container);
   margin: 1em auto;
   border-radius: var(--radius-m);
-  max-width: 210px;
   padding: 0.1em 1em;
 }
 /* remove empty state title */
