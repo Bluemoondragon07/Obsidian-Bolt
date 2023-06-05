@@ -89,6 +89,7 @@ svg.lucide-help-circle,
 svg.lucide-list,
 svg.lucide-clipboard-list {
 background-color: currentColor;
+-webkit-mask-repeat: no-repeat;
 }
 
 /* graph icon */
@@ -412,15 +413,15 @@ body {
 
 /* hide tag hashtags (#) */
 a.tag, .cm-line:not(.cm-active) .cm-hashtag-begin {
-    font-family: 'Formular', var(--font-interface-theme); /* Formular does not render hashtags */
+    font-family: 'Formular', var(--font-text); /* Formular does not render hashtags */
 }
 /* show hashtag again on hover */
-a.tag:hover, .cm-line:hover .cm-hashtag-begin {
-    font-family: var(--font-interface-theme);
+a.tag:not(.basename-tag):hover, .cm-line:hover .cm-hashtag-begin {
+    font-family: var(--font-text);
 }
 
 a.tag:not(.basename-tag) {
-    padding: 5px 7px 5px 0 !important; 
+    padding: 5px 0.5em 5px 0 !important; 
     text-align: center;
     transition: 0.2s;
 }
@@ -850,6 +851,7 @@ padding: 0;
 .frontmatter .token.key.atrule {
   color: var(--text-normal);
   font-weight: bold;
+  text-transform: capitalize;
 }
 .frontmatter .token.string {
   color: inherit;
@@ -1268,10 +1270,19 @@ button.mod-warning {
   display: none;
 }
 
+/* ===================== Plugins and PDFS ================================= */
+
 /* ================== PDF viewer  and Web View (Surfing) ============= */
 .theme-dark .pdf-viewer-container {
   filter: invert(100%);
 }
+
+/* =============== Metadata Menu ================ */
+a.metadata-menu.fileclass-icon svg  {
+    color: var(--primary) !important;
+}
+
+
 
 
 /* @settings
