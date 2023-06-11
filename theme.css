@@ -920,7 +920,8 @@ body.is-mobile .view-action:nth-last-of-type(2) {
 }
 
 /* ================= colors =================== */
-.theme-light {
+.theme-light,
+.is-mobile.theme-light {
     --accent-h: 181 !important;
     --accent-s: 100% !important;
     --accent-l: 21% !important;
@@ -960,7 +961,8 @@ body.is-mobile .view-action:nth-last-of-type(2) {
     --surface-variant: #dbe8e8;
     --on-surface-variant: #3f4949;
 }
-.theme-dark {
+.theme-dark,
+.is-mobile.theme-dark {
     --accent-h: 181 !important;
     --accent-s: 80% !important;
     --accent-l: 41% !important;
