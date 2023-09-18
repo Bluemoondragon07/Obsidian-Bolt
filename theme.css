@@ -11,7 +11,7 @@
 
 /* =============== some quick design choices using variables ==================== */
 body {
-    --font-interface-theme: Roboto, OpenSans, Inter, 'Noto Sans JP', 'UD Digi Kyokasho NK-R';
+    --font-interface-theme:  Roboto, OpenSans, Inter, 'Noto Sans JP', 'UD Digi Kyokasho NK-R';
     --border-width: 2px;
     --inline-title-weight: 500;
     --inline-title-size: 2.5em;
@@ -156,27 +156,34 @@ svg.sidebar-right {
 -webkit-mask-image:url('data:image/svg+xml,%3Csvg xmlns="http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg"  viewBox="0 0 24 24"%3E%3Cpath fill="currentColor" d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"%2F%3E%3C%2Fsvg%3E');
 }
 
+.restore-ribbon .workspace-ribbon {
+    background-color: var(--lower-accent) !important;
+}  .restore-ribbon .workspace-ribbon::before { background-color: var(--upper-accent) !important;}
+.restore-ribbon .workspace-ribbon * {
+    color: var(--on-upper-accent) !important;
+}
+
 /* == floating ribbon === */
 
 /* make ribbon 'float' */
-.workspace-ribbon {
+body:not(.restore-ribbon) .workspace-ribbon {
   bottom: 20px;
   left: 30px;
   flex-direction: column-reverse;
 }
 
 /*...but not on mobile */
-body:not(.is-mobile) .workspace-ribbon {
+body:not(.restore-ribbon):not(.is-phone) .workspace-ribbon {
     position: absolute;
 }
 
 /* fix appearance issues when not hovered */
-body:not(.is-mobile) .side-dock-ribbon:not(:hover){
+body:not(.restore-ribbon):not(.is-phone) .side-dock-ribbon:not(:hover){
         padding: calc(var(--icon-size) + 1px);
 } 
 
 /* some styling for the floating ribbon */
-body:not(.is-mobile) .side-dock-ribbon {
+body:not(.restore-ribbon):not(.is-phone) .side-dock-ribbon {
 box-shadow: var(--shadow-s);
 border: none !important;
 background-color: var(--surface) !important;
@@ -185,31 +192,31 @@ width: calc(var(--ribbon-width) + 1px);
 transform: scale(1.5) translateY(-16%);
 transition: 0.25s padding-top !important;
 }
-body:not(.is-mobile) .side-dock-ribbon svg {
+body:not(.restore-ribbon):not(.is-phone) .side-dock-ribbon svg {
  color: vaR(--primary) !important;
 }
 
 
 /* styling for the ribbon icon */
-body:not(.is-mobile) .workspace-ribbon.mod-left:not(:hover):before {
+body:not(.restore-ribbon):not(.is-phone) .workspace-ribbon.mod-left:not(:hover):before {
   border: none !important;
 }
 
 /* hide the other buttons when the ribbon is not hovered over */
-body:not(.is-mobile) .workspace-ribbon.side-dock-ribbon.mod-left:not(:hover) .side-dock-actions, 
-body:not(.is-mobile) .workspace-ribbon.side-dock-ribbon.mod-left:not(:hover) .side-dock-settings,
-body:not(.is-mobile) .workspace-ribbon:not(.is-collapsed).side-dock-ribbon.mod-left .side-dock-actions,
-body:not(.is-mobile) .workspace-ribbon:hover:before{
+body:not(.restore-ribbon):not(.is-phone) .workspace-ribbon.side-dock-ribbon.mod-left:not(:hover) .side-dock-actions, 
+body:not(.restore-ribbon):not(.is-phone) .workspace-ribbon.side-dock-ribbon.mod-left:not(:hover) .side-dock-settings,
+body:not(.restore-ribbon):not(.is-phone) .workspace-ribbon:not(.is-collapsed).side-dock-ribbon.mod-left .side-dock-actions,
+body:not(.restore-ribbon):not(.is-phone) .workspace-ribbon:hover:before{
     display: none;
 }
-body:not(.is-mobile) .side-dock-ribbon.mod-left:not(:hover) .side-dock-actions, 
-body:not(.is-mobile) .side-dock-ribbon.mod-left:not(:hover) .side-dock-settings { 
+body:not(.restore-ribbon):not(.is-phone) .side-dock-ribbon.mod-left:not(:hover) .side-dock-actions, 
+body:not(.restore-ribbon):not(.is-phone) .side-dock-ribbon.mod-left:not(:hover) .side-dock-settings { 
     display: none;
  }
 
 
 /* Make ribbon icon stay on the bottom when hovered */
-body:not(.is-mobile) .side-dock-ribbon.mod-left:hover .sidebar-toggle-button.mod-left {
+body:not(.restore-ribbon):not(.is-phone) .side-dock-ribbon.mod-left:hover .sidebar-toggle-button.mod-left {
 position: relative; /* this is the magic trick right here. */
 align-self: center;
 margin-bottom: -13px;
@@ -322,7 +329,9 @@ svg.lucide-clipboard-list {
 .callout-icon svg {
     color: var(--on-tertiary-container) !important;
 }
-
+.callout-content {
+    padding: 0.5em;
+}
 .callout:not(.is-collapsible) .callout-icon {
     margin: 10px 0 20px 0;
     width: 100%;
@@ -334,7 +343,9 @@ svg.lucide-clipboard-list {
     margin-left: 10px;
     display: block;
 }
-
+.callout-title {
+    padding: 0.25em;
+}
 .callout.is-collapsible .callout-icon {
     margin-right: 5px;
 }
@@ -346,7 +357,6 @@ svg.lucide-clipboard-list {
 .callout-fold {
 align-self: flex-start;
 }
-
 .callout:not(.is-collapsible) .callout-title {
 flex-wrap: wrap;
 }
@@ -360,6 +370,19 @@ flex-wrap: wrap;
 .callout-title-inner {
     color: var(--text-normal);
 }
+
+/* border for nested callouts and blockquotes  */
+.callout .callout, .callout blockquote, blockquote blockquote, blockquote .callout {
+    box-shadow: var(--shadow-s) !important;
+    margin: 1em 0.2em;
+    mix-blend-mode: normal !important;
+}
+.callout .callout {
+    background-color: var(--primary-container) !important;
+} .callout .callout .callout-title-inner, .callout .callout .callout-content, .callout .callout .callout-icon * {
+    color: var(--on-primary-container) !important;
+}
+
 
 /* ====================== small markdown elements ====================== */
 body {
@@ -536,6 +559,7 @@ body {
     --tab-background-active: transparent;
     --tab-divider-color: transparent;
     --tab-outline-width: 0;
+    --tab-width: 250px;
 }
 
 /* make window buttons blend into the tab bar */
@@ -581,10 +605,6 @@ svg.sidebar-right,
 background-color: transparent !important;
 }
 
-/* remove tab Xs except for the active tab */
-.workspace-tab-header:not(.is-active) .workspace-tab-header-inner-close-button {
-    visibility: hidden;
-}
 .workspace-tabs:not(.mod-stacked) .workspace-tab-header-inner-close-button,
 .workspace-tabs .metadata-menu.fileclass-icon {
     color: var(--on-upper-accent) !important;
@@ -593,20 +613,26 @@ background-color: transparent !important;
     border-bottom: 2px solid var(--on-upper-accent);
 }
 
+
 /* ========== view header ========== */
 body {
     --file-header-justify: left;
 }
 
 /* Material-like view header */
+
 .view-header,
 body:not(.is-mobile) .workspace-leaf-content:not([data-type="markdown"]) .nav-header {
-    background-color: var(--lower-accent);
+    background-color: var(--lower-accent) !important;
     color: var(--on-lower-accent);
+} .is-phone.view-header {
     box-shadow: var(--shadow-bottom);
 }
 .view-header {
-  background-color:  var(--lower-accent) !important;
+  background-color:  var(--lower-accent);
+  --text-faint: var(--on-lower-accent);
+  --text-normal: var(--on-lower-accent);
+  --text-muted: var(--on-lower-accent);
 }
 body:not(.is-mobile) .workspace-leaf-content:not([data-type="markdown"]) .nav-header * {
     color: var(--on-lower-accent);
@@ -777,11 +803,11 @@ width: 100%;
 }
 
 .workspace-drawer-active-tab-header {
-    background-color: var(--secondary-container);
+    background-color: var(--surface);
 }
 
 .workspace-drawer-active-tab-header > * {
-    color: var(--on-secondary-container) !important;
+    color: var(--on-surface) !important;
 }
 
 /* vault title */
@@ -839,24 +865,20 @@ padding: 0;
 .is-mobile .cmdr-adder {
   display: none;
 }
-/* hide frontmatter and show the YAML code block instead */
-.frontmatter-container {
-  display: none;
+body {
+    --metadata-background: var(--surface);
+    --metadata-padding: 1em;
+    --metadata-border-radius: var(--radius-s);
 }
-.frontmatter.language-yaml {
-  display: block !important;
-  background-color: var(--surface);
-  padding: 1em;
+.metadata-container {
+    --input-height: unset;
+}  .metadata-property {
+    height: unset;
 }
-.frontmatter .token.key.atrule {
-  color: var(--text-normal);
-  font-weight: bold;
-  text-transform: capitalize;
-}
-.frontmatter .token.string {
-  color: inherit;
-  font-style: italic;
-}
+.metadata-container.is-collapsed .metadata-properties-heading { padding: 0; margin: 0; }
+.metadata-container.is-collapsed .metadata-properties-title { color: var(--primary) ;  }
+.metadata-container   .collapse-indicator { display: none; }
+
 
 /* ========= files and folders ========= */
 
@@ -897,11 +919,15 @@ body.is-mobile .view-action:nth-last-of-type(2) {
     left: calc(100% - 60px - 30px);
     justify-content: center;
     align-items: center;
-    width: 60px;
-    height: 60px;
+    width: 70px;
+    height: 70px;
     box-shadow: var(--shadow-s);
     top: calc(100vh - 60px - 64px - 16px);
     z-index: 100 !important;
+}
+body.is-mobile .view-action:nth-last-of-type(2) svg {
+    width: 26px;
+    height: 26px;
 }
 .is-phone .view-header {
     z-index: 100; /* this ensures that the FAB is on top */
@@ -980,8 +1006,8 @@ body.is-mobile .view-action:nth-last-of-type(2) {
     --primary-lighter: hsl(var(--accent-h), calc(var(--accent-s) - 2%), calc(var(--accent-l) + 5%));
 
     --secondary: #b0cccc;
-    --on-secondary: #1b3435;
-    --secondary-container: #324b4c;
+    --on-secondary: #034747;
+    --secondary-container: #156f73;
     --on-secondary-container: #cce8e8;
 
     --tertiary: #b4c8e9;
@@ -994,13 +1020,13 @@ body.is-mobile .view-action:nth-last-of-type(2) {
     --error-container: #93000a;
     --on-error-container: #ffdad6;
 
-    --background: #191c1c;
+    --background: #0d1a1a;
     --on-background:#e0e3e2;
-    --surface: #273030;
+    --surface: #192e2e;
     --on-surface: #e0e3e2;
 
     --outline: #899392;
-    --surface-variant: #313a3a;
+    --surface-variant: #2f3f3f;
     --on-surface-variant: #bec8c8;
 }
 
@@ -1088,8 +1114,8 @@ body.is-mobile .view-action:nth-last-of-type(2) {
 
     --background: #1a1c18;
     --on-background: #e3e3dc;
-    --surface: #2d3129;
-    --on-surface: #1a1c18;
+    --surface: #1f231b;
+    --on-surface: #b6c0ad;
 
     --outline: #74796d;
     --surface-variant: #43483e;
@@ -1137,8 +1163,8 @@ body.is-mobile .view-action:nth-last-of-type(2) {
     --on-primary-container: #EADDFF;
 
     --secondary: #CCC2DC;
-    --on-secondary: #332D41;
-    --secondary-container: #4A4458;
+    --on-secondary: #483a69;
+    --secondary-container: #6e5c99;
     --on-secondary-container: #E8DEF8; 
 
     --tertiary: #EFB8C8;
@@ -1146,7 +1172,7 @@ body.is-mobile .view-action:nth-last-of-type(2) {
     --tertiary-container: #633B48;
     --on-tertiary-container: #FFD8E4;
 
-    --background: #1C1B1F;
+    --background: #191720;
     --on-background: #E6E1E5;
     --surface: #2b2930;
     --on-surface: #E6E1E5;
@@ -1192,19 +1218,19 @@ body.is-mobile .view-action:nth-last-of-type(2) {
     --accent-l: 87% !important;
 
     --primary: hsl(233, 100%, 87%);
-    --on-primary:#023e91;
-    --primary-container: #325169;
+    --on-primary:#d8e2ee;
+    --primary-container: #abd0ed;
     --on-primary-container: #dee0ff;
 
     --secondary: hsl(189, 100%, 87%);
-    --on-secondary: #5c858b;
-    --secondary-container: #40626b;
-    --on-secondary-container: #a0d4e2; 
+    --on-secondary: #1e93a5;
+    --secondary-container: #0d596e;
+    --on-secondary-container: #e5f4f8; 
 
-    --tertiary: #ffc97d;
-    --on-tertiary: #4d2f00;
-    --tertiary-container: #6e3900;
-    --on-tertiary-container: #ffdcc3;
+    --tertiary: #7dffd6;
+    --on-tertiary: #004d2d;
+    --tertiary-container: #138462;
+    --on-tertiary-container: #c3ffdc;
 
     --background: #18192a;
     --on-background: #e0e0ff;
@@ -1214,6 +1240,11 @@ body.is-mobile .view-action:nth-last-of-type(2) {
     --outline: #90909a;
     --surface-variant: #46464f;
     --on-surface-variant: #c7c5d0;
+}
+
+/* make lower accent same as upper accent on mobile */
+.is-phone.theme-light, .is-phone.theme-dark {
+    --lower-accent: var(--upper-accent);
 }
 
 /* ========== scrollbars ================== */
@@ -1318,5 +1349,12 @@ settings:
             -
                 label: Lumen
                 value: theme-lumen
+    -
+        id: restore-ribbon
+        title: Restore Default Ribbon
+        description: Replace the floating sidebar button with the default Obsidian ribbon on desktop.
+        type: class-toggle
+        default: false
+
 
 */
